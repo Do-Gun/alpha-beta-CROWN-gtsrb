@@ -15,6 +15,7 @@ conda activate alpha-beta-crown
 
 ## 2. Custom Model Download
 이 프로젝트에서 사용된 GTSRB CNN 모델에 대한 정보는 다음 레포지토리에서 확인할 수 있습니다:
+
 https://github.com/Do-Gun/GTSRB-Marabou-Verification
 
 ```bash
