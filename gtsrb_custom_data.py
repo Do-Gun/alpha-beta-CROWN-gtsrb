@@ -50,7 +50,6 @@ def gtsrb_dataloader(spec, **kwargs):
     database_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data')
     test_dataset = GTSRB(root=database_path, split='test', transform=transform, download=True)
     
-    # 마감 시간이 임박했으므로, 10개의 샘플만 테스트합니다.
     num_samples = 1
     
     # 데이터셋에서 10개의 이미지를 가져와 하나의 텐서로 합칩니다.
@@ -66,5 +65,5 @@ def gtsrb_dataloader(spec, **kwargs):
     data_max = torch.clamp(images + eps, 0, 1)
     data_min = torch.clamp(images - eps, 0, 1)
 
-    # 🚨핵심 수정 사항: AssertionError를 해결하기 위해 5번째 반환값을 None이 아닌 eps 값으로 수정합니다.
+    # AssertionError를 해결하기 위해 5번째 반환값을 None이 아닌 eps 값으로 수정합니다.
     return images, labels, data_max, data_min, eps
