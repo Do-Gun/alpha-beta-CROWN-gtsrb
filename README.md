@@ -10,7 +10,7 @@ conda activate alpha-beta-crown
 ```
 ---
 
-## 2. Custom Model 
+## 2. Custom Model Download
 
 ```bash
 git clone https://github.com/Do-Gun/alpha-beta-CROWN-gtsrb
