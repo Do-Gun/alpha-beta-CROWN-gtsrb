@@ -1,0 +1,34 @@
+# alpha-beta-CROWN/complete_verifier/exp_configs/gtsrb_config.yaml
+
+model:
+  # custom/gtsrb_custom_data.py 파일의 gtsrb_model 함수를 호출
+  name: Customized("custom.gtsrb_custom_data", "gtsrb_model")
+  # models 폴더 안에 있는 모델 가중치 파일
+  path: models/model.pt
+
+data:
+  # custom/gtsrb_custom_data.py 파일의 gtsrb_dataloader 함수를 호출
+  dataset: Customized("custom.gtsrb_custom_data", "gtsrb_dataloader")
+  # 커스텀 로더를 사용하므로 아래는 형식적으로만 사용됨
+  num_outputs: 43
+  mean: [0.0, 0.0, 0.0]
+  std: [1.0, 1.0, 1.0]
+  # 테스트할 데이터의 인덱스 범위 (데이터 로더에서 이미 10개로 고정함)
+  start: 0
+  end: 10
+
+specification:
+  norm: .inf
+  epsilon: 0.00784313725490196 # 2/255
+
+# 이제 나머지 설정들도 정상적으로 동작할 것입니다.
+solver:
+  batch_size: 1
+bab:
+  timeout: 180
+
+  
+general:
+  conv_mode: matrix       # ✅ patches 모드 → matrix로 변경 (TorchScript JIT 오류 회피)
+  sparse_alpha: false     # (선택) 복잡한 alpha bound 줄이기
+  sparse_interm: false    # (선택) intermediate bound 단순화
