@@ -23,5 +23,7 @@ mv alpha-beta-CROWN-gtsrb/model.pt complete_verifier/models/
 
 ## 3. Validation
 ```bash
+cd complete_verifier
+
 python abcrown.py --config exp_configs/gtsrb_config.yaml
 ```
